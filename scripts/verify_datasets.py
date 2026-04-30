@@ -70,13 +70,13 @@ def verify_dataset_files(datasets_dir: str, dataset_list: list[str]) -> bool:
 
         if not dataset_path.exists():
             print(f"  FAIL: Directory does not exist")
-            results.append({"dataset": dataset_name, "status": "MISSING", "path": str(dataset_path)})
+            results.append({"dataset": dir_name, "status": "MISSING", "path": str(dataset_path)})
             all_ok = False
             continue
 
         if not dataset_path.is_dir():
             print(f"  FAIL: Path exists but is not a directory")
-            results.append({"dataset": dataset_name, "status": "NOT_A_DIR", "path": str(dataset_path)})
+            results.append({"dataset": dir_name, "status": "NOT_A_DIR", "path": str(dataset_path)})
             all_ok = False
             continue
 
@@ -94,7 +94,7 @@ def verify_dataset_files(datasets_dir: str, dataset_list: list[str]) -> bool:
         print(f"  Total size: {size_mb:.2f} MB")
 
         results.append({
-            "dataset": dataset_name,
+            "dataset": dir_name,
             "status": "OK",
             "path": str(dataset_path),
             "file_count": file_count,
