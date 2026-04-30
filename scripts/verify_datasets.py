@@ -64,8 +64,10 @@ def verify_dataset_files(datasets_dir: str, dataset_list: list[str]) -> bool:
     results = []
 
     for dataset_name in dataset_list:
-        dataset_path = Path(datasets_dir) / dataset_name
+        dir_name = dataset_name.replace("/", "--")
+        dataset_path = Path(datasets_dir) / dir_name
         print(f"\n--- Checking: {dataset_name} ---")
+        print(f"  Dir name: {dir_name}")
         print(f"  Path: {dataset_path}")
 
         if not dataset_path.exists():
